@@ -1,0 +1,53 @@
+﻿@page
+@model BookManagement.Web.Pages.Books.IndexModel
+
+<h1>Books</h1>
+
+<p>
+    <a asp-page="Create">Create New Book</a>
+</p>
+
+@if (Model.Books.Count == 0)
+{
+    <p>No books found.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Price</th>
+                <th>Published Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var book in Model.Books)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Isbn</td>
+                    <td>@book.Price</td>
+                    <td>@book.PublishedDate.ToShortDateString()</td>
+
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@book.BookId">
+                            Edit
+                        </a>
+
+                        |
+
+                        <a asp-page="Delete" asp-route-id="@book.BookId">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

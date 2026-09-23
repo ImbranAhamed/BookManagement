@@ -1,0 +1,22 @@
+﻿@page
+@model BookManagement.Web.Pages.Books.DeleteModel
+
+<h1>Delete Book</h1>
+
+<p>
+    Are you sure you want to delete this book?
+</p>
+
+<p>
+    <strong>@Model.Title</strong>
+</p>
+
+<form method="post">
+
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <button type="submit">Delete</button>
+
+    <a asp-page="Index">Cancel</a>
+
+</form>
